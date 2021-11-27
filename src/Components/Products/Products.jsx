@@ -1,15 +1,14 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 import Product from './Product/Product';
-export default function Products() {
-    const products=[
-        {id:1,name:"Shoes", description:"Nike Shoes" },
-        {id:2,name:"Clock", description:"Wall Clock" },
-        {id:3,name:"KeyBoard", description:"Mac-keys" },
+import useStyles from "./styles"
+export default function Products({products}) {
+    const classes=useStyles();
 
-    ];
+   
     return (
-        <main>
+        <main className={classes.content}>
+            <div className={classes.toolbar}/>
             <Grid container justify="center" spacing={4}>
                 {
                     products.map(product=>{
