@@ -4,9 +4,10 @@ import React from 'react'
 import useStyles from "./styles";
 import { ShoppingCart } from '@material-ui/icons';
 
-export default function Navbar() {
+export default function Navbar({cart}) {
 
     const classes=useStyles();
+
     return (
         
         <div>
@@ -19,7 +20,7 @@ export default function Navbar() {
                     <div className={classes.grow}/>
                     <div className={classes.button}>
                         <IconButton aria-label="show cart items" color= "inherit">
-                            <Badge badgeContent={2} color="secondary">
+                            <Badge badgeContent={cart.total_items} color="secondary">
                                 <ShoppingCart />
                             </Badge>
                         </IconButton>

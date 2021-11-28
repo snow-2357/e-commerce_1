@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from '@material-ui/core'
 import Product from './Product/Product';
 import useStyles from "./styles"
-export default function Products({products}) {
+export default function Products({products,addToCart}) {
     const classes=useStyles();
 
    
@@ -14,7 +14,7 @@ export default function Products({products}) {
                     products.map(product=>{
                         return (
                             <Grid item key={product.id} xs={12} md={6} sm={4} lg={3}>
-                                <Product product={product}/>
+                                <Product product={product} addToCart={addToCart}/>
                             </Grid>
                         )
                     })
