@@ -1,10 +1,10 @@
 import { Container, Grid, Typography ,Button} from '@material-ui/core'
 import useStyles from "./styles"
 import React from 'react'
-
+import Cartitem from "./Cartitem/Cartitem"
 export default function Cart({cart}) {
     const classes=useStyles();
-    const isEmpty= !cart.line_items.length;
+ 
     const EmptyCart=()=>(
         <Typography variant="h6">No Item to be Found</Typography>
     );
@@ -13,7 +13,7 @@ export default function Cart({cart}) {
             <Grid container spacing={2}>
                 {cart.line_items.map((item)=>(
                     <Grid item xs={12} sm={4} key={item.id}>
-                        <div>{item.name}</div>
+                        <Cartitem item={item}/>
                     </Grid>
                 ))}
             </Grid>
@@ -29,14 +29,14 @@ export default function Cart({cart}) {
         </div>
     )
 
-    
+    if(!cart.line_items) return "Lodding---"
     
     return (
         <div>
             <Container>
                 <div className={classes.toolbar}></div>
-                <Typography className={classes.title} variant="h6">Your Shoping Cart</Typography> 
-                {isEmpty ? <EmptyCart/> : <FilledCart/>}
+                <Typography gutterBottom className={classes.title} variant="h6">Your Shoping Cart</Typography> 
+                {!cart.line_items.length ? <EmptyCart/> : <FilledCart/>}
             </Container>
         </div>
     )
